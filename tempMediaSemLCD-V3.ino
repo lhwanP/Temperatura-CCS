@@ -22,7 +22,7 @@ String idsala[] = {"XPS", "Implantador", "Sputtering", "S_MAQ", "T_Externa"};
 
 // Variável usada para ler o valor de temperatura
 int valorSensorTemp[] = {0, 0, 0, 0, 0};
-
+int idcontrolador = 1;
 int sensores = 5;
 // Variável usada para armazenar o menor valor de temperatura
 int valorTemp = INT_MAX;
@@ -102,9 +102,10 @@ void loop() {
 void montarpayload() {
 
   data = "";
+  data.concat("controlador="+idcontrolador);
   for (int j = 0; j < 5; j++)
   {
-    if (j > 0) data.concat("&");
+    data.concat("&");
     data.concat(idsala[j] + "=" + valorSensorTemp[j]);
   }
 }
